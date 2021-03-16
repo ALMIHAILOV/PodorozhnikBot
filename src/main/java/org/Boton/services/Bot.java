@@ -22,7 +22,7 @@ public class Bot extends AbilityBot {
         return Constants.CREATOR_ID;
     }
 
-    public Ability signup() {
+    public Ability start() {
         return Ability.builder()
                 .name("start")
                 .info("Create new user")
