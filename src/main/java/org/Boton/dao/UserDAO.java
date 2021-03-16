@@ -4,11 +4,11 @@ import org.Boton.model.User;
 
 public interface UserDAO {
 
-    public User findByTelegramId(int user_telegram_id);
+    User findByTelegramId(int user_telegram_id);
 
-    public void add(User user);
+    void add(User user);
 
-    public void remove(User user);
+    void remove(User user);
 
-    public void update(User user);
+    void update(User user);
 }

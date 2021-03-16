@@ -2,8 +2,6 @@ package org.Boton.services;
 
 import org.Boton.model.User;
 
-import java.sql.SQLException;
-
 import static org.Boton.Constants.EXCEPTION;
 import static org.Boton.Constants.USER_CREATED;
 
