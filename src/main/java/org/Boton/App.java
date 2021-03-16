@@ -1,18 +1,17 @@
 package org.Boton;
 
 import org.Boton.services.Bot;
-import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.TelegramBotsApi;
-import org.telegram.telegrambots.exceptions.TelegramApiException;
-
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 
 public class App {
     public static void main( String[] args ) {
-        ApiContextInitializer.init();
+        //ApiContextInitializer.init();
         try {
             // Create the TelegramBotsApi object to register your bots
-            TelegramBotsApi botsApi = new TelegramBotsApi();
+            TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
 
             // Register your newly created AbilityBot
             botsApi.registerBot(new Bot());

@@ -18,7 +18,7 @@ public class Bot extends AbilityBot {
     }
 
     @Override
-    public int creatorId() {
+    public long creatorId() {
         return Constants.CREATOR_ID;
     }
 
@@ -29,7 +29,7 @@ public class Bot extends AbilityBot {
                 .privacy(PUBLIC)
                 .locality(ALL)
                 .input(0)
-                .action(ctx -> silent.sendMd(CreateUser.createUser(ctx.user().firstName(), ctx.user().id(), ctx.chatId()), ctx.chatId()))
+                .action(ctx -> silent.sendMd(CreateUser.createUser(ctx.user().getFirstName(), ctx.user().getId(), ctx.chatId()), ctx.chatId()))
                 .build();
     }
 
