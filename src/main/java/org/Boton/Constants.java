@@ -8,4 +8,10 @@ public final class Constants {
 
     public static final String USER_CREATED = "Регистрация завершена";
     public static final String EXCEPTION = "Ошибка при выполнении запроса";
+
+    public static String UNDERGROUND = "Метро";
+    public static final String BUS = "Автобус/Троллейбус";
+    public static final String MINIBUS_TAXI1 = "Маршрутка 45 руб";
+    public static final String MINIBUS_TAXI2 = "Маршрутка 50 руб";
+
 }
