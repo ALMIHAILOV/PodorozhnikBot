@@ -1,18 +1,22 @@
 package org.Boton;
 
 import org.Boton.services.Bot;
-import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
-import org.telegram.telegrambots.generics.LongPollingBot;
+import org.telegram.telegrambots.TelegramBotsApi;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
+
+
 
 public class App {
     public static void main( String[] args ) {
         ApiContextInitializer.init();
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try {
-            telegramBotsApi.registerBot((LongPollingBot) new Bot());
-        } catch (TelegramApiRequestException e) {
+            // Create the TelegramBotsApi object to register your bots
+            TelegramBotsApi botsApi = new TelegramBotsApi();
+
+            // Register your newly created AbilityBot
+            botsApi.registerBot(new Bot());
+        } catch (TelegramApiException e) {
             e.printStackTrace();
         }
     }

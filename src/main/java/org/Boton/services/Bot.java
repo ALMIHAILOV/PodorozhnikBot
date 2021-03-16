@@ -4,6 +4,7 @@ import org.Boton.Constants;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
 
+
 import static org.telegram.abilitybots.api.objects.Locality.ALL;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
 
@@ -17,7 +18,7 @@ public class Bot extends AbilityBot {
     }
 
     @Override
-    public long creatorId() {
+    public int creatorId() {
         return Constants.CREATOR_ID;
     }
 
@@ -28,7 +29,7 @@ public class Bot extends AbilityBot {
                 .privacy(PUBLIC)
                 .locality(ALL)
                 .input(0)
-                .action(ctx -> silent.sendMd(CreateUser.createUser(ctx.user().getFirstName(), ctx.user().getId(), ctx.chatId()), ctx.chatId()))
+                .action(ctx -> silent.sendMd(CreateUser.createUser(ctx.user().firstName(), ctx.user().id(), ctx.chatId()), ctx.chatId()))
                 .build();
     }
 
