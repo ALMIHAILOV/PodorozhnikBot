@@ -1,7 +1,7 @@
 package org.Boton.utils;
 
 import org.Boton.Constants;
-import org.Boton.services.ChangeBalance;
+import org.Boton.services.UserService;
 import org.Boton.services.ViewStatistics;
 import org.telegram.abilitybots.api.sender.MessageSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -38,15 +38,26 @@ public class MessageFactory {
         }
     }
 
+    public void viewBalance(int currentBalance, long chatId) {
+        try {
+            SendMessage message = new SendMessage();
+            message.setText(Constants.BALANCE + currentBalance);
+            message.setChatId(Long.toString(chatId));
+            sender.execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void replyToButtons(long userTelegramId, long chatId, String buttonCommand) {
         switch (buttonCommand) {
-            case Constants.BUS -> ChangeBalance.changeBalance(userTelegramId, chatId, Constants.BUS_COST);
+            case Constants.BUS -> changeBalance(userTelegramId, chatId, Constants.BUS_COST);
 
-            case Constants.UNDERGROUND -> ChangeBalance.changeBalance(userTelegramId, chatId, Constants.UNDERGROUND_COST);
+            case Constants.UNDERGROUND -> changeBalance(userTelegramId, chatId, Constants.UNDERGROUND_COST);
 
-            case Constants.MINIBUS_TAXI1 -> ChangeBalance.changeBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI1_COAST);
+            case Constants.MINIBUS_TAXI1 -> changeBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI1_COAST);
 
-            case Constants.MINIBUS_TAXI2 -> ChangeBalance.changeBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI2_COAST);
+            case Constants.MINIBUS_TAXI2 -> changeBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI2_COAST);
 
             case Constants.TODAY -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.TODAY);
 
@@ -55,7 +66,13 @@ public class MessageFactory {
             case Constants.MONTH -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.MONTH);
 
             case Constants.YEAR -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.YEAR);
-
         }
+    }
+
+    private void changeBalance(long userTelegramId, long chatId, int value) {
+        UserService userService = new UserService();
+        userService.topUpBalance(value, userTelegramId);
+        int currentBalance = userService.currentBalance(userTelegramId);
+        viewBalance(currentBalance, chatId);
     }
 }

@@ -2,10 +2,14 @@ package org.Boton.services;
 
 import org.Boton.Constants;
 import org.Boton.utils.MessageFactory;
-import org.hibernate.sql.Update;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
+import org.telegram.abilitybots.api.objects.Flag;
+import org.telegram.abilitybots.api.objects.Reply;
+import org.telegram.telegrambots.meta.api.objects.Update;
 
+
+import java.util.function.Consumer;
 
 import static org.telegram.abilitybots.api.objects.Locality.ALL;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
@@ -59,5 +63,8 @@ public class Bot extends AbilityBot {
                 .build();
     }
 
-
+    public Reply reply() {
+        Consumer<Update> action = upd -> messageFactory.replyToButtons(userIds().get(upd),upd.getMessage().getChatId(),upd.getCallbackQuery().getData());
+        return Reply.of(action, Flag.CALLBACK_QUERY);
+    }
 }

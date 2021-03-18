@@ -24,4 +24,12 @@ public class UserService {
     public void updateUser(User user) {
         userDAOImp.update(user);
     }
+
+    public void topUpBalance(int topUpAmount, long userTelegramId) {
+        userDAOImp.topUpBalance(topUpAmount, userTelegramId);
+    }
+
+    public int currentBalance(long userTelegramId) {
+        return userDAOImp.currentBalance(userTelegramId);
+    }
 }

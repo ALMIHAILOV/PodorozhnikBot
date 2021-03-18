@@ -23,12 +23,13 @@ public final class Constants {
 
     public static final String CHOOSE_CHANGE = "Выберите вид транспорта, на котором была совершена поездка," +
             " или пополнение баланса карты:";
-
     public static final String CHOOSE_HISTORY = "Выберите, за какое время показать статистику:";
 
-    public static final int BUS_COST = 36;
-    public static final int UNDERGROUND_COST = 41;
-    public static final int MINIBUS_TAXI1_COAST = 45;
-    public static final int MINIBUS_TAXI2_COAST = 50;
+    public static final int BUS_COST = -36;
+    public static final int UNDERGROUND_COST = -41;
+    public static final int MINIBUS_TAXI1_COAST = -45;
+    public static final int MINIBUS_TAXI2_COAST = -50;
+
+    public static final String BALANCE = "Текущий баланс: ";
 
 }
