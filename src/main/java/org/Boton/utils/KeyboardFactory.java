@@ -14,33 +14,27 @@ public class KeyboardFactory {
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
         List<InlineKeyboardButton> rowInline1 = new ArrayList<>();
         List<InlineKeyboardButton> rowInline2 = new ArrayList<>();
-        List<InlineKeyboardButton> rowInline3 = new ArrayList<>();
 
         InlineKeyboardButton button1 = new InlineKeyboardButton();
         button1.setText(Constants.BUS);
-        button1.setCallbackData("1");
+        button1.setCallbackData(Constants.BUS);
         InlineKeyboardButton button2 = new InlineKeyboardButton();
         button2.setText(Constants.UNDERGROUND);
-        button2.setCallbackData("2");
+        button2.setCallbackData(Constants.UNDERGROUND);
         InlineKeyboardButton button3 = new InlineKeyboardButton();
         button3.setText(Constants.MINIBUS_TAXI1);
-        button3.setCallbackData("3");
+        button3.setCallbackData(Constants.MINIBUS_TAXI1);
         InlineKeyboardButton button4 = new InlineKeyboardButton();
         button4.setText(Constants.MINIBUS_TAXI2);
-        button4.setCallbackData("4");
-        InlineKeyboardButton button5 = new InlineKeyboardButton();
-        button5.setText(Constants.TOP_UP_BALANCE);
-        button5.setCallbackData("5");
+        button4.setCallbackData(Constants.MINIBUS_TAXI2);
 
         rowInline1.add(button1);
         rowInline1.add(button2);
         rowInline2.add(button3);
         rowInline2.add(button4);
-        rowInline3.add(button5);
 
         rowsInline.add(rowInline1);
         rowsInline.add(rowInline2);
-        rowsInline.add(rowInline3);
 
         inlineKeyboard.setKeyboard(rowsInline);
         return inlineKeyboard;

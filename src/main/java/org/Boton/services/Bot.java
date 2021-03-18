@@ -2,6 +2,7 @@ package org.Boton.services;
 
 import org.Boton.Constants;
 import org.Boton.utils.MessageFactory;
+import org.checkerframework.checker.units.qual.A;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
 import org.telegram.abilitybots.api.objects.Flag;
@@ -41,9 +42,9 @@ public class Bot extends AbilityBot {
                 .build();
     }
 
-    public Ability changeBalance() {
+    public Ability addTrip() {
         return Ability.builder()
-                .name("add")
+                .name("trip")
                 .info("Changes the balance on the card")
                 .privacy(PUBLIC)
                 .locality(ALL)
@@ -60,6 +61,17 @@ public class Bot extends AbilityBot {
                 .locality(ALL)
                 .input(0)
                 .action(ctx -> messageFactory.viewHistory(ctx.user().getId(), ctx.chatId()))
+                .build();
+    }
+
+    public Ability topUpBalance() {
+        return Ability.builder()
+                .name("add")
+                .info("Top up card's balance")
+                .privacy(PUBLIC)
+                .locality(ALL)
+                .input(0)
+                .action(ctx -> TopUpBalance.topUpBalance(ctx.user().getId(), ctx.update().getMessage().getReplyToMessage().getText()))
                 .build();
     }
 

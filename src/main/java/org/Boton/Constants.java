@@ -14,7 +14,7 @@ public final class Constants {
     public static final String BUS = "Наземный транспорт";
     public static final String MINIBUS_TAXI1 = "Маршрутка 45 руб";
     public static final String MINIBUS_TAXI2 = "Маршрутка 50 руб";
-    public static final String TOP_UP_BALANCE = "Пополнить баланс карты";
+    public static final String TOP_UP_BALANCE = "Баланс карты пополнен на ";
 
     public static final String TODAY = "Сегодня";
     public static final String WEEK = "Неделя";
