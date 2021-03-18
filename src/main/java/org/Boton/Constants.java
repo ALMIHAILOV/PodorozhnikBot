@@ -13,5 +13,6 @@ public final class Constants {
     public static final String BUS = "Автобус/Троллейбус";
     public static final String MINIBUS_TAXI1 = "Маршрутка 45 руб";
     public static final String MINIBUS_TAXI2 = "Маршрутка 50 руб";
+    public static final String TOP_UP_BALANCE = "Пополнить баланс карты";
 
 }
