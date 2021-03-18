@@ -7,15 +7,28 @@ public final class Constants {
     public static final int CREATOR_ID = 352081004;
 
     public static final String USER_CREATED = "Регистрация завершена";
+    public static final String USER_ALREADY_EXIST = "Пользователь уже зарегистрирован";
     public static final String EXCEPTION = "Ошибка при выполнении запроса";
 
-    public static String UNDERGROUND = "Метро";
+    public static final String UNDERGROUND = "Метро";
     public static final String BUS = "Наземный транспорт";
     public static final String MINIBUS_TAXI1 = "Маршрутка 45 руб";
     public static final String MINIBUS_TAXI2 = "Маршрутка 50 руб";
     public static final String TOP_UP_BALANCE = "Пополнить баланс карты";
 
+    public static final String TODAY = "Сегодня";
+    public static final String WEEK = "Неделя";
+    public static final String MONTH = "Месяц";
+    public static final String YEAR = "Год";
+
     public static final String CHOOSE_CHANGE = "Выберите вид транспорта, на котором была совершена поездка," +
-            " или пополнение баланса карты";
+            " или пополнение баланса карты:";
+
+    public static final String CHOOSE_HISTORY = "Выберите, за какое время показать статистику:";
+
+    public static final int BUS_COST = 36;
+    public static final int UNDERGROUND_COST = 41;
+    public static final int MINIBUS_TAXI1_COAST = 45;
+    public static final int MINIBUS_TAXI2_COAST = 50;
 
 }

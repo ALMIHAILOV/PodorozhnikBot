@@ -9,7 +9,7 @@ public class UserService {
     public UserService() {
     }
 
-    public User findUser(int user_telegram_id) {
+    public boolean findUser(long user_telegram_id) {
         return userDAOImp.findByTelegramId(user_telegram_id);
     }
 

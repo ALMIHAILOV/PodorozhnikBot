@@ -4,11 +4,15 @@ import org.Boton.model.User;
 
 public interface UserDAO {
 
-    User findByTelegramId(int user_telegram_id);
+    boolean findByTelegramId(long userTelegramId);
 
     void add(User user);
 
     void remove(User user);
 
     void update(User user);
+
+    void topUpBalance(int topUpAmount, long userTelegramId);
+
+    int currentBalance(long userTelegramId);
 }

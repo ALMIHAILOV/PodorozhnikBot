@@ -45,5 +45,36 @@ public class KeyboardFactory {
         inlineKeyboard.setKeyboard(rowsInline);
         return inlineKeyboard;
     }
+
+    public static ReplyKeyboard viewHistory(long userTelegramId) {
+        InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+        List<InlineKeyboardButton> rowInline1 = new ArrayList<>();
+        List<InlineKeyboardButton> rowInline2 = new ArrayList<>();
+
+        InlineKeyboardButton button1 = new InlineKeyboardButton();
+        button1.setText(Constants.TODAY);
+        button1.setCallbackData("1");
+        InlineKeyboardButton button2 = new InlineKeyboardButton();
+        button2.setText(Constants.WEEK);
+        button2.setCallbackData("2");
+        InlineKeyboardButton button3 = new InlineKeyboardButton();
+        button3.setText(Constants.MONTH);
+        button3.setCallbackData("3");
+        InlineKeyboardButton button4 = new InlineKeyboardButton();
+        button4.setText(Constants.YEAR);
+        button4.setCallbackData("4");
+
+        rowInline1.add(button1);
+        rowInline1.add(button2);
+        rowInline2.add(button3);
+        rowInline2.add(button4);
+
+        rowsInline.add(rowInline1);
+        rowsInline.add(rowInline2);
+
+        inlineKeyboard.setKeyboard(rowsInline);
+        return inlineKeyboard;
+    }
 }
 
