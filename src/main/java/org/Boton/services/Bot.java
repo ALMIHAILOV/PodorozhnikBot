@@ -1,6 +1,7 @@
 package org.Boton.services;
 
 import org.Boton.Constants;
+import org.Boton.utils.MessageFactory;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
 
@@ -17,6 +18,8 @@ public class Bot extends AbilityBot {
         super(botToken, botUsername);
     }
 
+    MessageFactory messageFactory = new MessageFactory(sender);
+
     @Override
     public long creatorId() {
         return Constants.CREATOR_ID;
@@ -30,6 +33,17 @@ public class Bot extends AbilityBot {
                 .locality(ALL)
                 .input(0)
                 .action(ctx -> silent.sendMd(CreateUser.createUser(ctx.user().getFirstName(), ctx.user().getId(), ctx.chatId()), ctx.chatId()))
+                .build();
+    }
+
+    public Ability changeBalance() {
+        return Ability.builder()
+                .name("add")
+                .info("Changes the balance on the card")
+                .privacy(PUBLIC)
+                .locality(ALL)
+                .input(0)
+                .action(ctx -> messageFactory.changeBalance(ctx.user().getId(), ctx.chatId()))
                 .build();
     }
 

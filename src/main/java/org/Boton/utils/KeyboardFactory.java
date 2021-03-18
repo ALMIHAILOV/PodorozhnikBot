@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KeyboardFactory {
-    public static ReplyKeyboard choiceTypeTransport() {
+    public static ReplyKeyboard choiceTypeTransport(long userTelegramId) {
         InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
         List<InlineKeyboardButton> rowInline1 = new ArrayList<>();
@@ -18,19 +18,19 @@ public class KeyboardFactory {
 
         InlineKeyboardButton button1 = new InlineKeyboardButton();
         button1.setText(Constants.BUS);
-        button1.setCallbackData("");
+        button1.setCallbackData("1");
         InlineKeyboardButton button2 = new InlineKeyboardButton();
         button2.setText(Constants.UNDERGROUND);
-        button2.setCallbackData("");
+        button2.setCallbackData("2");
         InlineKeyboardButton button3 = new InlineKeyboardButton();
         button3.setText(Constants.MINIBUS_TAXI1);
-        button3.setCallbackData("");
+        button3.setCallbackData("3");
         InlineKeyboardButton button4 = new InlineKeyboardButton();
         button4.setText(Constants.MINIBUS_TAXI2);
-        button4.setCallbackData("");
+        button4.setCallbackData("4");
         InlineKeyboardButton button5 = new InlineKeyboardButton();
         button5.setText(Constants.TOP_UP_BALANCE);
-        button5.setCallbackData("");
+        button5.setCallbackData("5");
 
         rowInline1.add(button1);
         rowInline1.add(button2);
