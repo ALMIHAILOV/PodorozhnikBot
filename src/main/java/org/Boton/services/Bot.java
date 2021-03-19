@@ -71,12 +71,13 @@ public class Bot extends AbilityBot {
                 .privacy(PUBLIC)
                 .locality(ALL)
                 .input(0)
-                .action(ctx -> TopUpBalance.topUpBalance(ctx.user().getId(), ctx.update().getMessage().getReplyToMessage().getText()))
+                .action(ctx -> silent.sendMd(TopUpBalance.topUpBalance(ctx.user().getId(), ctx.update().getMessage().getText()), ctx.chatId()))
                 .build();
     }
 
     public Reply reply() {
-        Consumer<Update> action = upd -> messageFactory.replyToButtons(userIds().get(upd),upd.getMessage().getChatId(),upd.getCallbackQuery().getData());
+        System.out.println("reply");
+        Consumer<Update> action = upd -> messageFactory.replyToButtons(upd.getCallbackQuery().getMessage().getChatId(),upd.getCallbackQuery().getMessage().getChatId(),upd.getCallbackQuery().getData());
         return Reply.of(action, Flag.CALLBACK_QUERY);
     }
 }

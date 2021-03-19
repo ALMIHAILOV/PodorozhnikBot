@@ -51,13 +51,13 @@ public class MessageFactory {
 
     public void replyToButtons(long userTelegramId, long chatId, String buttonCommand) {
         switch (buttonCommand) {
-            case Constants.BUS -> changeBalance(userTelegramId, chatId, Constants.BUS_COST);
+            case Constants.BUS -> reducingBalance(userTelegramId, chatId, Constants.BUS_COST);
 
-            case Constants.UNDERGROUND -> changeBalance(userTelegramId, chatId, Constants.UNDERGROUND_COST);
+            case Constants.UNDERGROUND -> reducingBalance(userTelegramId, chatId, Constants.UNDERGROUND_COST);
 
-            case Constants.MINIBUS_TAXI1 -> changeBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI1_COAST);
+            case Constants.MINIBUS_TAXI1 -> reducingBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI1_COAST);
 
-            case Constants.MINIBUS_TAXI2 -> changeBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI2_COAST);
+            case Constants.MINIBUS_TAXI2 -> reducingBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI2_COAST);
 
             case Constants.TODAY -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.TODAY);
 
@@ -69,9 +69,13 @@ public class MessageFactory {
         }
     }
 
-    private void changeBalance(long userTelegramId, long chatId, int value) {
+    private void reducingBalance(long userTelegramId, long chatId, int value) {
+        System.out.println("reducingBalance");
+        System.out.println(userTelegramId);
+        System.out.println(chatId);
+        System.out.println(value);
         UserService userService = new UserService();
-        userService.topUpBalance(value, userTelegramId);
+        userService.changeBalance(value, userTelegramId);
         int currentBalance = userService.currentBalance(userTelegramId);
         viewBalance(currentBalance, chatId);
     }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-@DynamicUpdate()
+@DynamicUpdate(value = false)
 
 public class User {
     @Id

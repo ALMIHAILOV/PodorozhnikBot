@@ -12,7 +12,7 @@ public interface UserDAO {
 
     void update(User user);
 
-    void topUpBalance(int topUpAmount, long userTelegramId);
+    void changeBalance(int topUpAmount, long userTelegramId);
 
     int currentBalance(long userTelegramId);
 }

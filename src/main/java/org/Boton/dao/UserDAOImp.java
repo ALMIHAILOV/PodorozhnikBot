@@ -50,20 +50,29 @@ public class UserDAOImp implements UserDAO{
     }
 
     @Override
-    public void topUpBalance(int topUpAmount, long userTelegramId) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+    public void changeBalance(int topUpAmount, long userTelegramId) {
         int newBalance = currentBalance(userTelegramId) + topUpAmount;
-        Query query = session.createQuery("from User where user_telegram_id =:userId");
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        System.out.println(topUpAmount);
+        System.out.println(newBalance);
+        Query query = session.createQuery("from User where user_telegram_id =: userId");
         query.setParameter("userId", userTelegramId);
         User user = (User) query.getResultList().get(0);
+        System.out.println(user.getUser_telegram_id());
+        System.out.println(user.getAvailable_means());
         user.setAvailable_means(newBalance);
-        session.update(user);
+        System.out.println(user.getAvailable_means());
+        session.save(user);
+        tx1.commit();
+        session.close();
     }
 
     @Override
     public int currentBalance(long userTelegramId) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query query = session.createQuery("from User where user_telegram_id =: userId");
+        query.setParameter("userId", userTelegramId);
         User user = (User) query.getSingleResult();
         session.close();
         return user.getAvailable_means();
