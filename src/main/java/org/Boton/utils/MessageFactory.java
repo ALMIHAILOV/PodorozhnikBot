@@ -14,7 +14,7 @@ public class MessageFactory {
         this.sender = sender;
     }
 
-    public void changeBalance (long userTelegramId, long chatId) {
+    public void viewChangeBalanceKeyboard(long userTelegramId, long chatId) {
         try {
             SendMessage message = new SendMessage();
             message.setText(Constants.CHOOSE_CHANGE);
@@ -26,7 +26,7 @@ public class MessageFactory {
         }
     }
 
-    public void viewHistory(long userTelegramId, long chatId) {
+    public void viewHistoryKeyboard(long userTelegramId, long chatId) {
         try {
             SendMessage message = new SendMessage();
             message.setText(Constants.CHOOSE_HISTORY);
@@ -41,7 +41,7 @@ public class MessageFactory {
     public void viewBalance(int currentBalance, long chatId) {
         try {
             SendMessage message = new SendMessage();
-            message.setText(Constants.BALANCE + currentBalance);
+            message.setText(Constants.BALANCE + currentBalance + "рублей");
             message.setChatId(Long.toString(chatId));
             sender.execute(message);
         } catch (TelegramApiException e) {
@@ -70,13 +70,13 @@ public class MessageFactory {
     }
 
     private void reducingBalance(long userTelegramId, long chatId, int value) {
-        System.out.println("reducingBalance");
-        System.out.println(userTelegramId);
-        System.out.println(chatId);
-        System.out.println(value);
         UserService userService = new UserService();
         userService.changeBalance(value, userTelegramId);
         int currentBalance = userService.currentBalance(userTelegramId);
         viewBalance(currentBalance, chatId);
     }
+
+
+
+
 }

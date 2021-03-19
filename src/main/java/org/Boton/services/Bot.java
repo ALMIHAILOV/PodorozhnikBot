@@ -49,7 +49,7 @@ public class Bot extends AbilityBot {
                 .privacy(PUBLIC)
                 .locality(ALL)
                 .input(0)
-                .action(ctx -> messageFactory.changeBalance(ctx.user().getId(), ctx.chatId()))
+                .action(ctx -> messageFactory.viewChangeBalanceKeyboard(ctx.user().getId(), ctx.chatId()))
                 .build();
     }
 
@@ -60,18 +60,32 @@ public class Bot extends AbilityBot {
                 .privacy(PUBLIC)
                 .locality(ALL)
                 .input(0)
-                .action(ctx -> messageFactory.viewHistory(ctx.user().getId(), ctx.chatId()))
+                .action(ctx -> messageFactory.viewHistoryKeyboard(ctx.user().getId(), ctx.chatId()))
                 .build();
     }
 
     public Ability topUpBalance() {
+        TopUpBalance topUpBalance = new TopUpBalance();
         return Ability.builder()
                 .name("add")
                 .info("Top up card's balance")
                 .privacy(PUBLIC)
                 .locality(ALL)
                 .input(0)
-                .action(ctx -> silent.sendMd(TopUpBalance.topUpBalance(ctx.user().getId(), ctx.update().getMessage().getText()), ctx.chatId()))
+                .action(ctx -> silent.sendMd(topUpBalance.topUpBalance(ctx.user().getId(), ctx.update().getMessage().getText()), ctx.chatId()))
+                .build();
+    }
+
+    public Ability viewCurrentBalance() {
+        UserService userService = new UserService();
+
+        return Ability.builder()
+                .name("balance")
+                .info("View current balance")
+                .privacy(PUBLIC)
+                .locality(ALL)
+                .input(0)
+                .action(ctx -> messageFactory.viewBalance(userService.currentBalance(ctx.user().getId()),ctx.chatId()))
                 .build();
     }
 
