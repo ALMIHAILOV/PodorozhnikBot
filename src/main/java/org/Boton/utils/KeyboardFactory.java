@@ -1,9 +1,12 @@
 package org.Boton.utils;
 
 import org.Boton.Constants;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,16 +51,16 @@ public class KeyboardFactory {
 
         InlineKeyboardButton button1 = new InlineKeyboardButton();
         button1.setText(Constants.TODAY);
-        button1.setCallbackData("1");
+        button1.setCallbackData(Constants.TODAY);
         InlineKeyboardButton button2 = new InlineKeyboardButton();
         button2.setText(Constants.WEEK);
-        button2.setCallbackData("2");
+        button2.setCallbackData(Constants.WEEK);
         InlineKeyboardButton button3 = new InlineKeyboardButton();
         button3.setText(Constants.MONTH);
-        button3.setCallbackData("3");
+        button3.setCallbackData(Constants.MONTH);
         InlineKeyboardButton button4 = new InlineKeyboardButton();
         button4.setText(Constants.YEAR);
-        button4.setCallbackData("4");
+        button4.setCallbackData(Constants.YEAR);
 
         rowInline1.add(button1);
         rowInline1.add(button2);

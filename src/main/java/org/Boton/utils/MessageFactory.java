@@ -59,13 +59,13 @@ public class MessageFactory {
 
             case Constants.MINIBUS_TAXI2 -> reducingBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI2_COAST);
 
-            case Constants.TODAY -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.TODAY);
+            case Constants.TODAY -> getStatistics(userTelegramId, chatId, Constants.TODAY);
 
-            case Constants.WEEK -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.WEEK);
+            case Constants.WEEK -> getStatistics(userTelegramId, chatId, Constants.WEEK);
 
-            case Constants.MONTH -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.MONTH);
+            case Constants.MONTH -> getStatistics(userTelegramId, chatId, Constants.MONTH);
 
-            case Constants.YEAR -> ViewStatistics.viewStatistics(userTelegramId, chatId, Constants.YEAR);
+            case Constants.YEAR -> getStatistics(userTelegramId, chatId, Constants.YEAR);
         }
     }
 
@@ -74,6 +74,21 @@ public class MessageFactory {
         userService.changeBalance(value, userTelegramId);
         int currentBalance = userService.currentBalance(userTelegramId);
         viewBalance(currentBalance, chatId);
+    }
+
+    private void getStatistics(long userTelegramId, long chatId, String period) {
+        viewStatistics(chatId);
+    }
+
+    private void viewStatistics(long chatId) {
+        try {
+            SendMessage message = new SendMessage();
+            message.setText("Статистика пока не работает");
+            message.setChatId(Long.toString(chatId));
+            sender.execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
     }
 
 

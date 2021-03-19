@@ -90,7 +90,6 @@ public class Bot extends AbilityBot {
     }
 
     public Reply reply() {
-        System.out.println("reply");
         Consumer<Update> action = upd -> messageFactory.replyToButtons(upd.getCallbackQuery().getMessage().getChatId(),upd.getCallbackQuery().getMessage().getChatId(),upd.getCallbackQuery().getData());
         return Reply.of(action, Flag.CALLBACK_QUERY);
     }
