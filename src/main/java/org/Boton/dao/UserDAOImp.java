@@ -54,15 +54,10 @@ public class UserDAOImp implements UserDAO{
         int newBalance = currentBalance(userTelegramId) + topUpAmount;
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        System.out.println(topUpAmount);
-        System.out.println(newBalance);
         Query query = session.createQuery("from User where user_telegram_id =: userId");
         query.setParameter("userId", userTelegramId);
         User user = (User) query.getResultList().get(0);
-        System.out.println(user.getUser_telegram_id());
-        System.out.println(user.getAvailable_means());
         user.setAvailable_means(newBalance);
-        System.out.println(user.getAvailable_means());
         session.save(user);
         tx1.commit();
         session.close();
