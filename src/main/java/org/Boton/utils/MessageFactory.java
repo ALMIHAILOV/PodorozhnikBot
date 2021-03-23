@@ -2,14 +2,14 @@ package org.Boton.utils;
 
 import org.Boton.Constants;
 import org.Boton.model.Statistic;
+import org.Boton.services.GetDate;
 import org.Boton.services.StatisticService;
 import org.Boton.services.UserService;
-import org.Boton.services.ViewStatistics;
 import org.telegram.abilitybots.api.sender.MessageSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
 import java.util.Date;
+import java.util.List;
 
 public class MessageFactory {
     private final MessageSender sender;
@@ -77,7 +77,7 @@ public class MessageFactory {
         UserService userService = new UserService();
         StatisticService statisticService = new StatisticService();
         Date date = new Date();
-        Statistic statistic = new Statistic(userTelegramId, date, value, transportType);
+        Statistic statistic = new Statistic(userTelegramId, date.getTime(), value, transportType);
         statisticService.add(statistic);
         userService.changeBalance(value, userTelegramId);
         int currentBalance = userService.currentBalance(userTelegramId);
@@ -85,14 +85,38 @@ public class MessageFactory {
     }
 
     private void getStatistics(long userTelegramId, long chatId, String period) {
+        List<Statistic> statisticList;
 
-        viewStatistics(chatId);
+        GetDate getDate = new GetDate();
+        StatisticService statisticService = new StatisticService();
+
+        Date startDate = getDate.getStartDate(period);
+        Date endDate = getDate.getEndDate();
+        statisticList = statisticService.view(userTelegramId, startDate, endDate);
+        viewStatistics(chatId, statisticList);
     }
 
-    private void viewStatistics(long chatId) {
+    private void viewStatistics(long chatId, List<Statistic> statisticList) {
+        int expense = 0;
+        int byBus = 0;
+        int byUnderground = 0;
+        int byTaxi1 = 0;
+        int byTaxi2 = 0;
+
+        for (Statistic statistic : statisticList) {
+            expense = expense + statistic.getExpense();
+            switch (statistic.getTransportType()) {
+                case Constants.BUS -> byBus = byBus + 1;
+                case Constants.UNDERGROUND -> byUnderground = byUnderground + 1;
+                case Constants.MINIBUS_TAXI1 -> byTaxi1 = byTaxi1 + 1;
+                case Constants.MINIBUS_TAXI2 -> byTaxi2 = byTaxi2 + 1;
+            }
+        }
         try {
             SendMessage message = new SendMessage();
-            message.setText("Статистика пока не работает");
+            message.setText(Constants.EXPENSE_FOR_PERIOD + expense + "\n" +
+                            Constants.BY_BUS + byBus + "\n" + Constants.BY_UNDERGROUND + byUnderground + "\n" +
+                            Constants.BY_MINIBUS_TAXI1 + byTaxi1 + "\n" + Constants.BY_MINIBUS_TAXI2 + byTaxi2 + "\n");
             message.setChatId(Long.toString(chatId));
             sender.execute(message);
         } catch (TelegramApiException e) {

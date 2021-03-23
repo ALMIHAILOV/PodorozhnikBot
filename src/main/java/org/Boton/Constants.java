@@ -33,4 +33,10 @@ public final class Constants {
 
     public static final String BALANCE = "Текущий баланс: ";
 
+    public static final String EXPENSE_FOR_PERIOD = "Расход за выбранный период: ";
+    public static final String BY_BUS = "На наземном транспорте: ";
+    public static final String BY_UNDERGROUND = "На метро: ";
+    public static final String BY_MINIBUS_TAXI1 = "На маршрутке за 45 руб: ";
+    public static final String BY_MINIBUS_TAXI2 = "На маршрутке за 50 руб: ";
+
 }

@@ -9,5 +9,5 @@ public interface StatisticsDAO {
 
     void add(Statistic statistic);
 
-    List view(long userTelegramId, Date startDate, Date endDate);
+    List<Statistic> view(long userTelegramId, Date startDate, Date endDate);
 }

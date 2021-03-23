@@ -14,14 +14,14 @@ public class Statistic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private long userTelegramId;
-    private Date date;
+    private long date;
     private int expense;
     private String transportType;
 
     public Statistic() {
     }
 
-    public Statistic(long userTelegramId, Date date, int expense, String transportType) {
+    public Statistic(long userTelegramId, long date, int expense, String transportType) {
         this.userTelegramId = userTelegramId;
         this.date = date;
         this.expense = expense;
@@ -36,11 +36,11 @@ public class Statistic {
         this.userTelegramId = userTelegramId;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

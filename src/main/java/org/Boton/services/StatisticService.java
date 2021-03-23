@@ -17,7 +17,7 @@ public class StatisticService {
         statisticsDAOImp.add(statistic);
     }
 
-    public List view(long userTelegramId, Date startDate, Date endDate) {
+    public List<Statistic> view(long userTelegramId, Date startDate, Date endDate) {
         return statisticsDAOImp.view(userTelegramId,startDate,endDate);
     }
 }

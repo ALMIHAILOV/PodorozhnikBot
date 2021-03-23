@@ -13,7 +13,7 @@ public class TopUpBalance {
             StatisticService statisticService = new StatisticService();
             userService.changeBalance(Integer.parseInt(value.substring(5)), userTelegramId);
             Date date = new Date();
-            Statistic statistic = new Statistic(userTelegramId, date, Integer.parseInt(value.substring(5)), Constants.TOP_UP);
+            Statistic statistic = new Statistic(userTelegramId, date.getTime(), Integer.parseInt(value.substring(5)), Constants.TOP_UP);
             statisticService.add(statistic);
             int currentBalance = userService.currentBalance(userTelegramId);
             return Constants.TOP_UP_BALANCE + Integer.parseInt(value.substring(5)) + " рублей. " + Constants.BALANCE +

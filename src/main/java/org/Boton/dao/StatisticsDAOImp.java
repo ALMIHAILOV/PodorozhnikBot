@@ -24,14 +24,14 @@ public class StatisticsDAOImp implements StatisticsDAO{
     }
 
     @Override
-    public List view(long userTelegramId, Date startDate, Date endDate) {
+    public List<Statistic> view(long userTelegramId, Date startDate, Date endDate) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Statistic> criteriaQuery = builder.createQuery(Statistic.class);
         Root<Statistic> statisticRoot = criteriaQuery.from(Statistic.class);
         criteriaQuery.select(statisticRoot);
 
-        criteriaQuery.where(builder.between(statisticRoot.get("date"), startDate, endDate),
+        criteriaQuery.where(builder.between(statisticRoot.get("date"), startDate.getTime(), endDate.getTime()),
                             builder.equal(statisticRoot.get("userTelegramId"), userTelegramId));
         List<Statistic> statisticList = session.createQuery(criteriaQuery).getResultList();
         session.close();
