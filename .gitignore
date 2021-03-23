@@ -1,3 +1,9 @@
 /1614431601:AAFMB7ptBOLowGEdZ7rx5BGWHW9rEtTuDNI
 /1614431601:AAFMB7ptBOLowGEdZ7rx5BGWHW9rEtTuDNI.wal.0
 /PodorozhnikTelegramBot
+/target/
+/target/classes/
+/target/generated-sources/
+/target/generated-test-sources/
+/target/maven-status/
+/target/test-classes/
