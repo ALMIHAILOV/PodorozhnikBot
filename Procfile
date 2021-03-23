@@ -1,1 +1,1 @@
-worker: java -cp target/classes:target/dependency/* org.PodorozhnikBot.App.main
+worker: java -cp target/classes:target/dependency/* App
