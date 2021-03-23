@@ -1,1 +1,1 @@
-worker: java -cp target/classes/org/Boton:target/dependency/* App
+worker: java -cp target/classes:target/dependency/* App
