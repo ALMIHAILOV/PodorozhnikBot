@@ -1,7 +1,7 @@
-package org.Boton.services;
+package org.PodorozhnikBot.services;
 
-import org.Boton.dao.StatisticsDAOImp;
-import org.Boton.model.Statistic;
+import org.PodorozhnikBot.dao.StatisticsDAOImp;
+import org.PodorozhnikBot.model.Statistic;
 
 import java.util.Date;
 import java.util.List;

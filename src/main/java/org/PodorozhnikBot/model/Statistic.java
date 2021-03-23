@@ -1,9 +1,8 @@
-package org.Boton.model;
+package org.PodorozhnikBot.model;
 
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "statistic")

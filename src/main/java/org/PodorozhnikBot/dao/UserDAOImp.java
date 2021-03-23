@@ -1,15 +1,11 @@
-package org.Boton.dao;
+package org.PodorozhnikBot.dao;
 
-import org.Boton.model.User;
-import org.Boton.utils.HibernateSessionFactoryUtil;
+import org.PodorozhnikBot.model.User;
+import org.PodorozhnikBot.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UserDAOImp implements UserDAO{

@@ -1,7 +1,7 @@
-package org.Boton.dao;
+package org.PodorozhnikBot.dao;
 
-import org.Boton.model.Statistic;
-import org.Boton.utils.HibernateSessionFactoryUtil;
+import org.PodorozhnikBot.model.Statistic;
+import org.PodorozhnikBot.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

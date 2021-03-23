@@ -1,4 +1,4 @@
-package org.Boton.model;
+package org.PodorozhnikBot.model;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -16,6 +16,7 @@ public class User {
     private long user_telegram_id;
     private long user_chat_id;
     private int available_means;
+    private int card_number;
 
     public User(String user_first_name, long user_telegram_id, long user_chat_id) {
         this.user_first_name = user_first_name;
@@ -62,5 +63,13 @@ public class User {
 
     public void setAvailable_means(int available_means) {
         this.available_means = available_means;
+    }
+
+    public int getCard_number() {
+        return card_number;
+    }
+
+    public void setCard_number(int card_number) {
+        this.card_number = card_number;
     }
 }

@@ -1,7 +1,7 @@
-package org.Boton.services;
+package org.PodorozhnikBot.services;
 
-import org.Boton.dao.UserDAOImp;
-import org.Boton.model.User;
+import org.PodorozhnikBot.dao.UserDAOImp;
+import org.PodorozhnikBot.model.User;
 
 public class UserService {
     private UserDAOImp userDAOImp = new UserDAOImp();

@@ -1,8 +1,8 @@
-package org.Boton.services;
+package org.PodorozhnikBot.services;
 
-import org.Boton.model.User;
+import org.PodorozhnikBot.model.User;
 
-import static org.Boton.Constants.*;
+import static org.PodorozhnikBot.Constants.*;
 
 public class CreateUser{
     public static String createUser(String user_first_name, long user_telegram_id, long user_chat_id) {

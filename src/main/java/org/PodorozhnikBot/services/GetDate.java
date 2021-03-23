@@ -1,6 +1,6 @@
-package org.Boton.services;
+package org.PodorozhnikBot.services;
 
-import org.Boton.Constants;
+import org.PodorozhnikBot.Constants;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;

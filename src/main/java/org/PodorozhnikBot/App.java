@@ -1,6 +1,6 @@
-package org.Boton;
+package org.PodorozhnikBot;
 
-import org.Boton.services.Bot;
+import org.PodorozhnikBot.services.Bot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;

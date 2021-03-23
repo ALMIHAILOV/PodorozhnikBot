@@ -1,4 +1,4 @@
-package org.Boton;
+package org.PodorozhnikBot;
 
 import static org.junit.Assert.assertTrue;
 

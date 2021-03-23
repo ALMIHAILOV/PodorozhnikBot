@@ -1,6 +1,6 @@
-package org.Boton.dao;
+package org.PodorozhnikBot.dao;
 
-import org.Boton.model.User;
+import org.PodorozhnikBot.model.User;
 
 public interface UserDAO {
 

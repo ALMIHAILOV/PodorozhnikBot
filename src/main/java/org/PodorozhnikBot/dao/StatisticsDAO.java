@@ -1,6 +1,6 @@
-package org.Boton.dao;
+package org.PodorozhnikBot.dao;
 
-import org.Boton.model.Statistic;
+import org.PodorozhnikBot.model.Statistic;
 
 import java.util.Date;
 import java.util.List;

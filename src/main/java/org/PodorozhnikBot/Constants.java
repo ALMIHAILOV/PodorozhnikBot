@@ -1,4 +1,4 @@
-package org.Boton;
+package org.PodorozhnikBot;
 
 public final class Constants {
     //Telegram bot credentials

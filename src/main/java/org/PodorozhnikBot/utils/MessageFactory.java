@@ -1,10 +1,10 @@
-package org.Boton.utils;
+package org.PodorozhnikBot.utils;
 
-import org.Boton.Constants;
-import org.Boton.model.Statistic;
-import org.Boton.services.GetDate;
-import org.Boton.services.StatisticService;
-import org.Boton.services.UserService;
+import org.PodorozhnikBot.Constants;
+import org.PodorozhnikBot.model.Statistic;
+import org.PodorozhnikBot.services.GetDate;
+import org.PodorozhnikBot.services.StatisticService;
+import org.PodorozhnikBot.services.UserService;
 import org.telegram.abilitybots.api.sender.MessageSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;

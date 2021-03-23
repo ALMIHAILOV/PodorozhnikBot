@@ -1,7 +1,7 @@
-package org.Boton.utils;
+package org.PodorozhnikBot.utils;
 
-import org.Boton.model.Statistic;
-import org.Boton.model.User;
+import org.PodorozhnikBot.model.Statistic;
+import org.PodorozhnikBot.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
