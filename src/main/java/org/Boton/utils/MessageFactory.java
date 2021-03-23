@@ -1,11 +1,15 @@
 package org.Boton.utils;
 
 import org.Boton.Constants;
+import org.Boton.model.Statistic;
+import org.Boton.services.StatisticService;
 import org.Boton.services.UserService;
 import org.Boton.services.ViewStatistics;
 import org.telegram.abilitybots.api.sender.MessageSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.util.Date;
 
 public class MessageFactory {
     private final MessageSender sender;
@@ -51,13 +55,13 @@ public class MessageFactory {
 
     public void replyToButtons(long userTelegramId, long chatId, String buttonCommand) {
         switch (buttonCommand) {
-            case Constants.BUS -> reducingBalance(userTelegramId, chatId, Constants.BUS_COST);
+            case Constants.BUS -> reducingBalance(userTelegramId, chatId, Constants.BUS_COST, Constants.BUS);
 
-            case Constants.UNDERGROUND -> reducingBalance(userTelegramId, chatId, Constants.UNDERGROUND_COST);
+            case Constants.UNDERGROUND -> reducingBalance(userTelegramId, chatId, Constants.UNDERGROUND_COST, Constants.UNDERGROUND);
 
-            case Constants.MINIBUS_TAXI1 -> reducingBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI1_COAST);
+            case Constants.MINIBUS_TAXI1 -> reducingBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI1_COAST, Constants.MINIBUS_TAXI1);
 
-            case Constants.MINIBUS_TAXI2 -> reducingBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI2_COAST);
+            case Constants.MINIBUS_TAXI2 -> reducingBalance(userTelegramId, chatId, Constants.MINIBUS_TAXI2_COAST, Constants.MINIBUS_TAXI2);
 
             case Constants.TODAY -> getStatistics(userTelegramId, chatId, Constants.TODAY);
 
@@ -69,14 +73,19 @@ public class MessageFactory {
         }
     }
 
-    private void reducingBalance(long userTelegramId, long chatId, int value) {
+    private void reducingBalance(long userTelegramId, long chatId, int value, String transportType) {
         UserService userService = new UserService();
+        StatisticService statisticService = new StatisticService();
+        Date date = new Date();
+        Statistic statistic = new Statistic(userTelegramId, date, value, transportType);
+        statisticService.add(statistic);
         userService.changeBalance(value, userTelegramId);
         int currentBalance = userService.currentBalance(userTelegramId);
         viewBalance(currentBalance, chatId);
     }
 
     private void getStatistics(long userTelegramId, long chatId, String period) {
+
         viewStatistics(chatId);
     }
 
