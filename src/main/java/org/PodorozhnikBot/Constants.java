@@ -1,10 +1,6 @@
 package org.PodorozhnikBot;
 
 public final class Constants {
-    //Telegram bot credentials
-    //public static final String BOT_USERNAME = "PodorozhnikTelegramBot";
-    //public static final String BOT_TOKEN = "1614431601:AAFMB7ptBOLowGEdZ7rx5BGWHW9rEtTuDNI";
-    //public static final int CREATOR_ID = 352081004;
 
     public static final String USER_CREATED = "Регистрация завершена";
     public static final String USER_ALREADY_EXIST = "Пользователь уже зарегистрирован";
@@ -38,5 +34,4 @@ public final class Constants {
     public static final String BY_UNDERGROUND = "На метро: ";
     public static final String BY_MINIBUS_TAXI1 = "На маршрутке за 45 руб: ";
     public static final String BY_MINIBUS_TAXI2 = "На маршрутке за 50 руб: ";
-
 }

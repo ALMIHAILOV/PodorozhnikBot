@@ -15,6 +15,7 @@ public class UserDAOImp implements UserDAO{
         Query query = session.createQuery("select user_telegram_id from User where user_telegram_id =: userId");
         List<Long> list = query.setParameter("userId", userTelegramId).getResultList();
         session.close();
+        HibernateSessionFactoryUtil.getSessionFactory().close();
         return list.isEmpty();
     }
 
@@ -25,6 +26,7 @@ public class UserDAOImp implements UserDAO{
         session.save(user);
         tx1.commit();
         session.close();
+        HibernateSessionFactoryUtil.getSessionFactory().close();
     }
 
     @Override
@@ -34,6 +36,7 @@ public class UserDAOImp implements UserDAO{
         session.remove(user);
         tx1.commit();
         session.close();
+        HibernateSessionFactoryUtil.getSessionFactory().close();
     }
 
     @Override
@@ -43,6 +46,7 @@ public class UserDAOImp implements UserDAO{
         session.update(user);
         tx1.commit();
         session.close();
+        HibernateSessionFactoryUtil.getSessionFactory().close();
     }
 
     @Override
@@ -57,6 +61,7 @@ public class UserDAOImp implements UserDAO{
         session.save(user);
         tx1.commit();
         session.close();
+        HibernateSessionFactoryUtil.getSessionFactory().close();
     }
 
     @Override
@@ -66,8 +71,7 @@ public class UserDAOImp implements UserDAO{
         query.setParameter("userId", userTelegramId);
         User user = (User) query.getSingleResult();
         session.close();
+        HibernateSessionFactoryUtil.getSessionFactory().close();
         return user.getAvailable_means();
     }
-
-
 }
