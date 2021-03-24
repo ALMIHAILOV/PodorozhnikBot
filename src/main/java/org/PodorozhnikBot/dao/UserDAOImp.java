@@ -11,7 +11,7 @@ import java.util.List;
 public class UserDAOImp implements UserDAO{
     @Override
     public boolean findByTelegramId(long userTelegramId) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Query query = session.createQuery("select user_telegram_id from User where user_telegram_id =: userId");
         List<Long> list = query.setParameter("userId", userTelegramId).getResultList();
         session.close();
@@ -20,7 +20,7 @@ public class UserDAOImp implements UserDAO{
 
     @Override
     public void add(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction tx1 = session.beginTransaction();
         session.save(user);
         tx1.commit();
@@ -29,7 +29,7 @@ public class UserDAOImp implements UserDAO{
 
     @Override
     public void remove(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction tx1 = session.beginTransaction();
         session.remove(user);
         tx1.commit();
@@ -38,7 +38,7 @@ public class UserDAOImp implements UserDAO{
 
     @Override
     public void update(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction tx1 = session.beginTransaction();
         session.update(user);
         tx1.commit();
@@ -48,7 +48,7 @@ public class UserDAOImp implements UserDAO{
     @Override
     public void changeBalance(int topUpAmount, long userTelegramId) {
         int newBalance = currentBalance(userTelegramId) + topUpAmount;
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Transaction tx1 = session.beginTransaction();
         Query query = session.createQuery("from User where user_telegram_id =: userId");
         query.setParameter("userId", userTelegramId);
@@ -61,7 +61,7 @@ public class UserDAOImp implements UserDAO{
 
     @Override
     public int currentBalance(long userTelegramId) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
         Query query = session.createQuery("from User where user_telegram_id =: userId");
         query.setParameter("userId", userTelegramId);
         User user = (User) query.getSingleResult();
