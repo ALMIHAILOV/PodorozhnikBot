@@ -20,7 +20,6 @@ public class StatisticsDAOImp implements StatisticsDAO{
         session.save(statistic);
         tx1.commit();
         session.close();
-        HibernateSessionFactoryUtil.getSessionFactory().close();
     }
 
     @Override
@@ -35,7 +34,6 @@ public class StatisticsDAOImp implements StatisticsDAO{
                             builder.equal(statisticRoot.get("userTelegramId"), userTelegramId));
         List<Statistic> statisticList = session.createQuery(criteriaQuery).getResultList();
         session.close();
-        HibernateSessionFactoryUtil.getSessionFactory().close();
         return statisticList;
     }
 }
