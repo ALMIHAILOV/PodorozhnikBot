@@ -7,16 +7,17 @@ import org.telegram.abilitybots.api.objects.Ability;
 import org.telegram.abilitybots.api.objects.Flag;
 import org.telegram.abilitybots.api.objects.Reply;
 import org.telegram.telegrambots.meta.api.objects.Update;
-
-
+import java.util.Map;
 import java.util.function.Consumer;
-
 import static org.telegram.abilitybots.api.objects.Locality.ALL;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
 
+
 public class Bot extends AbilityBot {
+    private static final Map<String, String> getenv = System.getenv();
+
     public Bot() {
-        this(Constants.BOT_TOKEN, Constants.BOT_USERNAME);
+        this(getenv.get("BOT_TOKEN"), getenv.get("BOT_USERNAME"));
     }
 
     private Bot(String botToken, String botUsername) {
@@ -27,7 +28,7 @@ public class Bot extends AbilityBot {
 
     @Override
     public long creatorId() {
-        return Constants.CREATOR_ID;
+        return Long.parseLong(getenv.get("CREATOR_ID"));
     }
 
     public Ability start() {
