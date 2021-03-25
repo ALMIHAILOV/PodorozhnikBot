@@ -11,16 +11,19 @@ import java.util.Date;
 
 public class GetDate {
     public Date getEndDate() {
-        LocalDateTime now = LocalDateTime.now();
         ZoneId zoneId = ZoneId.of("Europe/Moscow");
+        LocalDateTime now = LocalDateTime.now(zoneId);
+
 
         return Date.from(now.atZone(zoneId).toInstant());
+
+
     }
 
     public Date getStartDate(String period) {
-        LocalDateTime now = LocalDateTime.now();
-        ZoneId zoneId = ZoneId.of("Europe/Moscow");
 
+        ZoneId zoneId = ZoneId.of("Europe/Moscow");
+        LocalDateTime now = LocalDateTime.now(zoneId);
         switch (period) {
             case Constants.TODAY -> {
                 return Date.from(now.with(LocalTime.MIDNIGHT).atZone(zoneId).toInstant());
