@@ -42,5 +42,5 @@ public final class Constants {
     public static final String REMINDER_IS_ON = "Напоминания включены";
     public static final String REMINDER_IS_OFF = "Напоминания выключены";
 
-    public static final String VIEW_WEB_TXT = "https://ispp.spbmetropoliten.ru/ \n Номер карты: ";
+    public static final String VIEW_WEB_TXT = "https://ispp.spbmetropoliten.ru/ \nНомер карты: ";
 }
