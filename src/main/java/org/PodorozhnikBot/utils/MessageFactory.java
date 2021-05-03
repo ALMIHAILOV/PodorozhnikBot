@@ -70,6 +70,10 @@ public class MessageFactory {
             case Constants.MONTH -> getStatistics(userTelegramId, chatId, Constants.MONTH);
 
             case Constants.YEAR -> getStatistics(userTelegramId, chatId, Constants.YEAR);
+
+            case Constants.ON -> changeReminder(userTelegramId, chatId, true);
+
+            case Constants.OFF -> changeReminder(userTelegramId, chatId,false);
         }
     }
 
@@ -124,7 +128,39 @@ public class MessageFactory {
         }
     }
 
+    public void settings(long userTelegramId, long chatId) {
+        UserService userService = new UserService();
+        boolean isReminder = userService.isReminder(userTelegramId);
+        String question;
+        String textButton;
+        if (isReminder) {
+            question = Constants.REMINDER_IS_ON;
+            textButton = Constants.OFF;
+        } else {
+            question = Constants.REMINDER_IS_OFF;
+            textButton = Constants.ON;
+        }
+        try {
+            SendMessage message = new SendMessage();
+            message.setText(question);
+            message.setChatId(Long.toString(chatId));
+            message.setReplyMarkup(KeyboardFactory.settings(textButton));
+            sender.execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
 
-
-
+    private void changeReminder(long userTelegramId, long chatId, boolean command) {
+        UserService userService = new UserService();
+        userService.changeReminder(userTelegramId, command);
+        try {
+            SendMessage message = new SendMessage();
+            message.setText(Constants.CHANGED);
+            message.setChatId(Long.toString(chatId));
+            sender.execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
 }

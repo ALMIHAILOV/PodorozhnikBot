@@ -34,4 +34,13 @@ public final class Constants {
     public static final String BY_UNDERGROUND = "На метро: ";
     public static final String BY_MINIBUS_TAXI1 = "На маршрутке за 45 руб: ";
     public static final String BY_MINIBUS_TAXI2 = "На маршрутке за 50 руб: ";
+
+    public static final String REMINDER = "Не забудь добавить поездки!";
+    public static final String ON = "Включить напоминания";
+    public static final String OFF = "Выключить напоминания";
+    public static final String CHANGED = "Настройки изменены";
+    public static final String REMINDER_IS_ON = "Напоминания включены";
+    public static final String REMINDER_IS_OFF = "Напоминания выключены";
+
+    public static final String VIEW_WEB_TXT = "https://ispp.spbmetropoliten.ru/ /n Номер карты: ";
 }

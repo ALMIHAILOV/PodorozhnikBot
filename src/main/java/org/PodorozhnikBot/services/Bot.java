@@ -8,6 +8,7 @@ import org.telegram.abilitybots.api.objects.Flag;
 import org.telegram.abilitybots.api.objects.Reply;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import java.util.Map;
+import java.util.TimerTask;
 import java.util.function.Consumer;
 import static org.telegram.abilitybots.api.objects.Locality.ALL;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
@@ -89,8 +90,33 @@ public class Bot extends AbilityBot {
                 .build();
     }
 
+    public Ability settings() {
+        return Ability.builder()
+                .name("settings")
+                .info("Settings")
+                .privacy(PUBLIC)
+                .locality(ALL)
+                .input(0)
+                .action(ctx -> messageFactory.settings(ctx.user().getId(), ctx.chatId()))
+                .build();
+    }
+
+    public Ability viewWebSite() {
+        ViewPodorozhnikWebSite viewPodorozhnikWebSite = new ViewPodorozhnikWebSite();
+        return Ability.builder()
+                .name("site")
+                .info("view Web Site")
+                .privacy(PUBLIC)
+                .locality(ALL)
+                .input(0)
+                .action(ctx -> silent.sendMd(viewPodorozhnikWebSite.viewSite(ctx.user().getId()), ctx.chatId()))
+                .build();
+    }
+
     public Reply reply() {
         Consumer<Update> action = upd -> messageFactory.replyToButtons(upd.getCallbackQuery().getMessage().getChatId(),upd.getCallbackQuery().getMessage().getChatId(),upd.getCallbackQuery().getData());
         return Reply.of(action, Flag.CALLBACK_QUERY);
     }
+
+
 }

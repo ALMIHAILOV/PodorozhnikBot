@@ -17,6 +17,7 @@ public class User {
     private long user_chat_id;
     private int available_means;
     private int card_number;
+    private boolean isReminder;
 
     public User(String user_first_name, long user_telegram_id, long user_chat_id) {
         this.user_first_name = user_first_name;
@@ -71,5 +72,13 @@ public class User {
 
     public void setCard_number(int card_number) {
         this.card_number = card_number;
+    }
+
+    public boolean getReminder() {
+        return isReminder;
+    }
+
+    public void setReminder(boolean reminder) {
+        isReminder = reminder;
     }
 }

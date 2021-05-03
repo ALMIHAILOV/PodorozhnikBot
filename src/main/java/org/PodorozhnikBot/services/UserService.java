@@ -32,4 +32,12 @@ public class UserService {
     public int currentBalance(long userTelegramId) {
         return userDAOImp.currentBalance(userTelegramId);
     }
+
+    public boolean isReminder(long userTelegramId) {return userDAOImp.isReminder(userTelegramId);}
+
+    public void changeReminder(long userTelegramId, boolean command) {
+        userDAOImp.changeReminder(userTelegramId, command);
+    }
+
+    public int viewCardNumber(long userTelegramId) {return userDAOImp.viewCardNumber(userTelegramId);}
 }

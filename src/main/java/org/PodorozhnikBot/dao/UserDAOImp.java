@@ -68,4 +68,37 @@ public class UserDAOImp implements UserDAO{
         session.close();
         return user.getAvailable_means();
     }
+
+    @Override
+    public boolean isReminder(long userTelegramId) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query query = session.createQuery("from User where user_telegram_id =: userId");
+        query.setParameter("userId", userTelegramId);
+        User user = (User) query.getSingleResult();
+        session.close();
+        return user.getReminder();
+    }
+
+    @Override
+    public void changeReminder(long userTelegramId, boolean command) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        Query query = session.createQuery("from User where user_telegram_id =: userId");
+        query.setParameter("userId", userTelegramId);
+        User user = (User) query.getResultList().get(0);
+        user.setReminder(command);
+        session.save(user);
+        tx1.commit();
+        session.close();
+    }
+
+    @Override
+    public int viewCardNumber(long userTelegramId) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query query = session.createQuery("from User where user_telegram_id =: userId");
+        query.setParameter("userId", userTelegramId);
+        User user = (User) query.getSingleResult();
+        session.close();
+        return user.getCard_number();
+    }
 }

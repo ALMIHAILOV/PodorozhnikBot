@@ -15,4 +15,10 @@ public interface UserDAO {
     void changeBalance(int topUpAmount, long userTelegramId);
 
     int currentBalance(long userTelegramId);
+
+    boolean isReminder(long userTelegramId);
+
+    void changeReminder(long userTelegramId, boolean command);
+
+    int viewCardNumber(long userTelegramId);
 }
